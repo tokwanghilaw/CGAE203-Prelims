@@ -8,29 +8,19 @@ using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This is the main class used to implement control of the player.
-    /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
-    /// </summary>
     public class PlayerController : KinematicObject
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
 
-        /// <summary>
-        /// Max horizontal speed of the player.
-        /// </summary>
         public float maxSpeed = 7;
-        /// <summary>
-        /// Initial jump velocity at the start of a jump.
-        /// </summary>
         public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        public Collider2D collider2d;
+        public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
@@ -65,7 +55,8 @@ namespace Platformer.Mechanics
             animator = GetComponent<Animator>();
         }
 
-        void Start()
+        // Use the 'new' keyword to hide the inherited Start() method
+        new void Start()
         {
             newPosition = firePoint.localPosition;
         }
@@ -94,13 +85,14 @@ namespace Platformer.Mechanics
                 {
                     animator.SetTrigger("atk");
                     ShootBullet();
-                } else if (Input.GetKeyDown(KeyCode.X) && timer >= fireRate)
+                } 
+                else if (Input.GetKeyDown(KeyCode.X) && timer >= fireRate)
                 {
                     animator.SetTrigger("atk");
                     ShootBullet2();
                     timer = 0f;
-
-                } else if (Input.GetKeyDown(KeyCode.C))
+                } 
+                else if (Input.GetKeyDown(KeyCode.C))
                 {
                     animator.SetTrigger("atk");
                     ShootBullet3();
@@ -118,6 +110,7 @@ namespace Platformer.Mechanics
             {
                 move.x = 0;
             }
+
             timer += Time.deltaTime;
 
             UpdateJumpState();
@@ -189,30 +182,24 @@ namespace Platformer.Mechanics
             InFlight,
             Landed
         }
+
         void ShootBullet()
         {
-            // Instantiate a bullet at the fire point position and rotation
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-            // Access the BulletController script and set its speed
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.speed = 10f;
         }
+
         void ShootBullet2()
         {
-            // Instantiate a bullet at the fire point position and rotation
             GameObject bullet = Instantiate(bulletPrefab2, firePoint.position, firePoint.rotation);
-
-            // Access the BulletController script and set its speed
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.speed = 10f;
         }
+
         void ShootBullet3()
         {
-            // Instantiate a bullet at the fire point position and rotation
             GameObject bullet = Instantiate(bulletPrefab3, firePoint.position, firePoint.rotation);
-
-            // Access the BulletController script and set its speed
             BulletController bulletController = bullet.GetComponent<BulletController>();
             bulletController.speed = 10f;
         }

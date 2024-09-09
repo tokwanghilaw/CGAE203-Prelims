@@ -6,18 +6,39 @@ public class EnemyBulletController : MonoBehaviour
 {
     public float speed = 10f;
 
+    void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
     void Update()
     {
         // Move the bullet horizontally
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    /*
+    void OnTriggerEnter2D(Collider2D collision)
     {
         // Destroy the player on collision
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObjects.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Untagged"))
+        {
+            Destroy(gameObject);
+        }
+    }
+    */
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+             Destroy(other.gameObject);
+            
+
         }
     }
 }

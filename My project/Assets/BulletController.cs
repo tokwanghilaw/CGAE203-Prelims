@@ -12,10 +12,10 @@ public class BulletController : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
         // Destroy the bullet if it goes off-screen
-        if (!GetComponent<Renderer>().isVisible)
-        {
-            Destroy(gameObject);
-        }
+        //if (!GetComponent<Renderer>().isVisible)
+        //{
+          //  Destroy(gameObject);
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -24,7 +24,6 @@ public class BulletController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
-            Destroy(gameObject);
         }
     }
 }

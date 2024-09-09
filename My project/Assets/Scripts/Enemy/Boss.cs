@@ -22,7 +22,7 @@ namespace Platformer.Mechanics
         bool canMove = true;
         Vector2 move;
         SpriteRenderer spriteRenderer;
-        internal Animator animator;
+        public Animator animator;
         readonly PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
         public GameObject bulletPrefab;
@@ -37,6 +37,7 @@ namespace Platformer.Mechanics
         protected override void Start()
         {
             base.Start();
+            animator = GetComponent<Animator>();
             // Make sure the player reference is assigned
             if (player == null)
             {

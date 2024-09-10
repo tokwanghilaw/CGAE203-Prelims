@@ -6,26 +6,24 @@ public class BulletController : MonoBehaviour
 {
     public float speed = 10f;
 
-    void Update()
+    void Start()
     {
-        // Move the bullet horizontally
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        // Destroy the bullet if it goes off-screen
-        //if (!GetComponent<Renderer>().isVisible)
-        //{
-          //  Destroy(gameObject);
-        //}
+        Destroy(gameObject, 5f);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void Update()
     {
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+    }
 
-        if (collision.gameObject.CompareTag("Enemy"))
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Terrain"))
+        else if (other.gameObject.CompareTag("Terrain"))
         {
             Destroy(gameObject);
         }

@@ -13,7 +13,6 @@ public class EnemyBulletController : MonoBehaviour
 
     void Update()
     {
-        // Move the bullet horizontally
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 

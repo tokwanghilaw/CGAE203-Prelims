@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6684278081446450474}
   - component: {fileID: -4980360501233610189}
   - component: {fileID: -1707480226874550375}
+  - component: {fileID: -7252290430115813152}
   m_Layer: 0
   m_Name: enemypower Prefab
   m_TagString: Untagged
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6396644536764999293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9076aa04af14b374d80e7caf7f741ff8, type: 3}
   m_Name: 
@@ -164,3 +165,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4630772, y: 0.2570941}
   m_EdgeRadius: 0
+--- !u!114 &-7252290430115813152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6396644536764999293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ac9aca0bc138e4ba9db282b01151dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10

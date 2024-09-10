@@ -25,5 +25,9 @@ public class BulletController : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Terrain"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -17,28 +17,16 @@ public class EnemyBulletController : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    /*
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Destroy the player on collision
-        if (collision.gameObjects.CompareTag("Player"))
-        {
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.CompareTag("Untagged"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    */
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-             Destroy(other.gameObject);
-            
-
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Terrain"))
+        {
+            Destroy(gameObject);
         }
     }
 }
